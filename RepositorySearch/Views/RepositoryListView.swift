@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct RepositoryListView: View {
-    @ObservedObject var listElementViewModel: ListElementViewModel
+    @ObservedObject var listElementViewModel: RepositoryListViewModel
     @Environment(\.presentationMode) var presentationMode
-
+  
+    
     init(query: String) {
-        self.listElementViewModel = ListElementViewModel(query: query)
+        self.listElementViewModel = RepositoryListViewModel(query: query)
     }
     
     var body: some View {
@@ -21,8 +22,16 @@ struct RepositoryListView: View {
                 Button("Bezár"){
                     presentationMode.wrappedValue.dismiss()
                 }
-                
+                .frame(width: 150)
+                .frame(height: 50)
+                .background(.blue)
+                .font(.title)
+                .foregroundStyle(.white)
+                .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
                 .padding()
+                
+                Divider()
+                
                 
                 List {
                     
@@ -34,16 +43,35 @@ struct RepositoryListView: View {
                         }
                     }
                 }
+                
                 .scrollContentBackground(.hidden)
                 
-                
-                
-                .task{
-                    listElementViewModel.getRepos()
+                .overlay{
+                    if listElementViewModel.isLoading {
+                        ProgressView("Keresés...")
+                            .controlSize(.large)
+                        
+                    }
+                    
+                    
                 }
+                
+                
+                
                 
             }
             .background(Color(UIColor.systemGray6))
+            .alert("Hiba", isPresented: $listElementViewModel.showErrorAlert ) {
+                Button("OK") {
+                    listElementViewModel.showErrorAlert = false
+                    listElementViewModel.error = nil
+                    presentationMode.wrappedValue.dismiss()
+                }
+            } message: {
+                if let error = listElementViewModel.error {
+                    Text("\(WebService().getErrorMessage(error: error))")
+                }
+            }
             
         }
     }
