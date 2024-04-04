@@ -21,7 +21,7 @@ struct LaunchView: View {
             Spacer()
             
             HStack{
-                Image(systemName: "pencil")
+                Image(systemName: "magnifyingglass")
                     .padding(.leading)
                 Divider()
                 TextField("Keresendő repository", text: $launchViewModel.inputText)
