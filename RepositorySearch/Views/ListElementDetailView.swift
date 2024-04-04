@@ -46,8 +46,8 @@ struct ListElementDetailView: View {
                     .padding(.top)
             }
 
-            if let gitUrl = repo.gitUrl {
-                Link("Repository Link", destination: URL(string: gitUrl)!)
+            if let htmlUrl = repo.htmlUrl {
+                Link("Repository Link", destination: URL(string: htmlUrl)!)
                     .padding(.top)
             }
 
