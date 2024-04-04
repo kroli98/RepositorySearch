@@ -8,11 +8,73 @@
 import SwiftUI
 
 struct ListElementDetailView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    let repo: RepositoryModel
 
-#Preview {
-    ListElementDetailView()
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                if let avatarUrl = repo.owner?.avatarUrl {
+                    AsyncImage(url: URL(string: avatarUrl)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 50, height: 50)
+                    .clipShape(Circle())
+                }
+
+                VStack(alignment: .leading) {
+                    if let ownerLogin = repo.owner?.login {
+                        Text(ownerLogin)
+                            .font(.headline)
+                    }
+
+                    if let ownerHtmlUrl = repo.owner?.htmlUrl {
+                        Link("GitHub Profil", destination: URL(string: ownerHtmlUrl)!)
+                    }
+                }
+            }
+
+            if let name = repo.name {
+                Text(name)
+                    .font(.largeTitle)
+                    .padding(.top)
+            }
+
+            if let description = repo.description {
+                Text(description)
+                    .padding(.top)
+            }
+
+            if let gitUrl = repo.gitUrl {
+                Link("Repository Link", destination: URL(string: gitUrl)!)
+                    .padding(.top)
+            }
+
+            VStack(alignment: .leading) {
+                if let stargazersCount = repo.stargazersCount {
+                    Text("Csillagok: \(stargazersCount)")
+                }
+
+                if let forksCount = repo.forksCount {
+                    Text("Forkok: \(forksCount)")
+                }
+            }
+            .padding(.top)
+
+            VStack(alignment: .leading) {
+                if let createdAt = repo.createdAt, let formattedCreatedAt = RepositoryModel.formatDateString(createdAt) {
+                    Text("Létrehozva: \(formattedCreatedAt)")
+                }
+
+                if let updatedAt = repo.updatedAt, let formattedUpdatedAt = RepositoryModel.formatDateString(updatedAt) {
+                    Text("Frissítve: \(formattedUpdatedAt)")
+                }
+            }
+            .padding(.top)
+
+            Spacer()
+        }
+        .padding()
+    }
 }

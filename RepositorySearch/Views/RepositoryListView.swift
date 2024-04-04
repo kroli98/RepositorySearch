@@ -16,31 +16,36 @@ struct RepositoryListView: View {
     }
     
     var body: some View {
-        
-        VStack{
-            Button("Bezár"){
-                presentationMode.wrappedValue.dismiss()
-            }
-            
-            .padding()
-            
-            List {
-                
-                ForEach(listElementViewModel.repos.indices, id: \.self) { index in
-                    ListElementCardView(repo: listElementViewModel.repos[index])
+        NavigationStack{
+            VStack{
+                Button("Bezár"){
+                    presentationMode.wrappedValue.dismiss()
                 }
+                
+                .padding()
+                
+                List {
+                    
+                    ForEach(listElementViewModel.repos.indices, id: \.self) { index in
+                        NavigationLink{
+                            ListElementDetailView(repo: listElementViewModel.repos[index])
+                        } label: {
+                            ListElementCardView(repo: listElementViewModel.repos[index])
+                        }
+                    }
+                }
+                .scrollContentBackground(.hidden)
+                
+                
+                
+                .task{
+                    listElementViewModel.getRepos()
+                }
+                
             }
-            .scrollContentBackground(.hidden)
-        
-          
-            
-            .task{
-                listElementViewModel.getRepos()
-            }
+            .background(Color(UIColor.systemGray6))
             
         }
-        .background(Color(UIColor.systemGray6))
-        
     }
 }
 

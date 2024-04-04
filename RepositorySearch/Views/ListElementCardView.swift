@@ -14,30 +14,34 @@ struct ListElementCardView: View {
         HStack(alignment: .center)
         {
             VStack(alignment: .leading){
-                Text(repo.name)
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                Text(repo.name ?? "Hiányzó név")
+                    .font(.title2)
+                    .bold()
                 
-                Text(repo.description ?? "")
-                    .font(.caption)
+                Text(repo.description ?? "Hiányzó leírás")
+                    .font(.caption2)
             }
-            VStack{
-                Image(systemName: "star")
-                
-                Image(systemName: "arrow.up.circle.badge.clock")
-            }
+           Divider()
             
-            .font(.caption)
+            
             VStack(alignment: .leading){
                 HStack{
-                   
-                    Text("\(repo.stargazersCount)")
+                    Image(systemName: "star")
+
+                    if let stargazersCount = repo.stargazersCount{
+                        Text("\(stargazersCount)")
+                    }
+                    else{
+                        Text("Hiányzó csillagok")
+                    }
                 }
                 HStack{
-                  
-                    Text(RepositoryModel.formatDateString(repo.updatedAt) ?? "")
+                    Image(systemName: "arrow.up.circle.badge.clock")
+
+                    Text(RepositoryModel.formatDateString(repo.updatedAt ?? "Hiányzó dátum") ?? "")
                 }
             }
-            .font(.caption)
+            .font(.caption2)
             
         }
         .padding()
