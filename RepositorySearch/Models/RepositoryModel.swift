@@ -8,10 +8,10 @@
 import Foundation
 
 struct RepositoryModel: Codable {
-   
+    
     let name: String?
     let description: String?
-    let gitUrl: String?
+    let htmlUrl: String?
     let stargazersCount: Int?
     let forksCount: Int?
     let createdAt: String?
@@ -19,15 +19,15 @@ struct RepositoryModel: Codable {
     let owner: Owner?
     
     enum CodingKeys: String, CodingKey {
-           case name
-           case description
-           case gitUrl = "git_url"
-           case stargazersCount = "stargazers_count"
-           case forksCount = "forks_count"
-           case createdAt = "created_at"
-           case updatedAt = "updated_at"
-           case owner
-       }
+        case name
+        case description
+        case htmlUrl = "html_url"
+        case stargazersCount = "stargazers_count"
+        case forksCount = "forks_count"
+        case createdAt = "created_at"
+        case updatedAt = "updated_at"
+        case owner
+    }
     
     static func formatDateString(_ dateString: String) -> String? {
         let dateFormatter = DateFormatter()
@@ -50,15 +50,15 @@ struct RepositoryModel: Codable {
 extension RepositoryModel {
     static func getSampleRepo() -> RepositoryModel {
         let owner = Owner(login: "apple", avatarUrl: "https://avatars.githubusercontent.com/u/10639145?v=4", htmlUrl: "https://github.com/apple")
-               
-               return RepositoryModel(name: "swift",
-                                      description: "The Swift Programming Language",
-                                      gitUrl: "https://github.com/apple",
-                                      stargazersCount: 65734,
-                                      forksCount: 10184,
-                                      createdAt: "2015-10-23T21:15:07Z",
-                                      updatedAt: "2024-04-04T08:50:05Z",
-                                      owner: owner)
+        
+        return RepositoryModel(name: "swift",
+                               description: "The Swift Programming Language",
+                               htmlUrl: "https://github.com/apple/swift",
+                               stargazersCount: 65734,
+                               forksCount: 10184,
+                               createdAt: "2015-10-23T21:15:07Z",
+                               updatedAt: "2024-04-04T08:50:05Z",
+                               owner: owner)
     }
 }
 
