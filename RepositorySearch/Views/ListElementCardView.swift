@@ -21,10 +21,16 @@ struct ListElementCardView: View {
                 Text(repo.description ?? "Hiányzó leírás")
                     .font(.caption2)
             }
-           Divider()
+            .frame(maxWidth: .infinity, alignment: .leading)
+           
+               
+                Divider()
+               
+            
+          
             
             
-            VStack(alignment: .leading){
+            VStack(alignment: .leading,spacing: 10){
                 HStack{
                     Image(systemName: "star")
 
@@ -42,6 +48,7 @@ struct ListElementCardView: View {
                 }
             }
             .font(.caption2)
+            .frame(maxWidth: .infinity, alignment: .leading)
             
         }
         .padding()
