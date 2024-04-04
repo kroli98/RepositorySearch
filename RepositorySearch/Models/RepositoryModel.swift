@@ -9,14 +9,14 @@ import Foundation
 
 struct RepositoryModel: Codable {
    
-    let name: String
+    let name: String?
     let description: String?
-    let gitUrl: String
-    let stargazersCount: Int
-    let forksCount: Int
-    let createdAt: String
-    let updatedAt: String
-    let owner: Owner
+    let gitUrl: String?
+    let stargazersCount: Int?
+    let forksCount: Int?
+    let createdAt: String?
+    let updatedAt: String?
+    let owner: Owner?
     
     enum CodingKeys: String, CodingKey {
            case name
