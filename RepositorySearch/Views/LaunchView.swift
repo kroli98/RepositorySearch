@@ -10,6 +10,7 @@ import SwiftUI
 struct LaunchView: View {
     
     @ObservedObject private var launchViewModel = LaunchViewModel()
+    @State var showmodal = false
     var body: some View {
         
         VStack{
@@ -37,7 +38,7 @@ struct LaunchView: View {
             
             Button(action: {
                 if !launchViewModel.isButtonDisabled{
-                    
+                    showmodal = true
                 }
             }, label: {
                 Text("Keresés")
@@ -54,6 +55,9 @@ struct LaunchView: View {
         }
         .alert("Add meg a keresendő repositoryt", isPresented: $launchViewModel.showAlert){ Button("OK", role: .cancel){}
         }
+        .sheet(isPresented: $showmodal, content: {
+            RepositoryListView(query: launchViewModel.inputText)
+        })
     }
         
 }

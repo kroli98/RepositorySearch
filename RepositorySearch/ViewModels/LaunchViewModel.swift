@@ -12,6 +12,7 @@ class LaunchViewModel: ObservableObject{
     @Published var inputText = ""
     @Published var showAlert = false
     
+    
     var isButtonDisabled: Bool {
         if inputText.isEmpty{
             showAlert = true

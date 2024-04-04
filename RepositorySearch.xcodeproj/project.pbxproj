@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E821263A2BBEE11700E57259 /* RepositorySearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E82126392BBEE11700E57259 /* RepositorySearchResponseModel.swift */; };
 		E88537112BBD5CA2005F9B51 /* LaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88537102BBD5CA2005F9B51 /* LaunchViewModel.swift */; };
 		E88537132BBDC502005F9B51 /* ListElementCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88537122BBDC502005F9B51 /* ListElementCardView.swift */; };
 		E88537152BBDC56D005F9B51 /* ListElementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E88537142BBDC56D005F9B51 /* ListElementViewModel.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E82126392BBEE11700E57259 /* RepositorySearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositorySearchResponseModel.swift; sourceTree = "<group>"; };
 		E88537102BBD5CA2005F9B51 /* LaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewModel.swift; sourceTree = "<group>"; };
 		E88537122BBDC502005F9B51 /* ListElementCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListElementCardView.swift; sourceTree = "<group>"; };
 		E88537142BBDC56D005F9B51 /* ListElementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListElementViewModel.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				E88537162BBDC5CB005F9B51 /* RepositoryModel.swift */,
+				E82126392BBEE11700E57259 /* RepositorySearchResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E821263A2BBEE11700E57259 /* RepositorySearchResponseModel.swift in Sources */,
 				E88537152BBDC56D005F9B51 /* ListElementViewModel.swift in Sources */,
 				E8DA0CCB2BBC89B2009F600A /* LaunchView.swift in Sources */,
 				E885371E2BBDC85A005F9B51 /* WebService.swift in Sources */,
